@@ -11,6 +11,23 @@ var onBtnClick = function (t, opts) {
 	console.log('Someone clicked the button');
   };
 
+var btnCallback = function (t, opts) {
+	return t.popup({
+	  title: 'Snooze Card',
+	  items: [{
+		text: 'Choose Time',
+		callback: onBtnClick
+	  }, {
+		text: 'In 1 hour',
+		callback: onBtnClick
+	  }, {
+		text: 'In 2 hours',
+		callback: onBtnClick
+	  }]
+	});
+  };
+
+
 TrelloPowerUp.initialize({
 	'board-buttons': function (t, opts) {
 		return [{
@@ -41,7 +58,7 @@ TrelloPowerUp.initialize({
 		  // we recommend that you use a popup on click generally
 		  icon: WHITE_ICON, // don't use a colored icon here
 		  text: 'Test Button',
-		  callback: onBtnClick,
+		  callback: btnCallback,
 		  condition: 'edit'
 		}, {
 		  // but of course, you could also just kick off to a url if that's your thing
